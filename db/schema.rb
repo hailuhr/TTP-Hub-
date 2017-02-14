@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214202941) do
+ActiveRecord::Schema.define(version: 20170214204418) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20170214202941) do
     t.datetime "end_date"
   end
 
+  create_table "employers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.string "company_name"
+  end
+
   create_table "experiences", force: :cascade do |t|
     t.integer  "applicant_id"
     t.string   "position_title"
@@ -38,8 +45,29 @@ ActiveRecord::Schema.define(version: 20170214202941) do
     t.boolean  "volunteer",      default: false
   end
 
+  create_table "interests", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "names"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string  "name"
+    t.string  "skills"
+    t.string  "level"
+    t.integer "compensation"
+    t.string  "benefits_package"
+    t.string  "location"
+    t.integer "employer_id"
+    t.integer "applicant_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "url"
   end
 
   create_table "skills", force: :cascade do |t|
